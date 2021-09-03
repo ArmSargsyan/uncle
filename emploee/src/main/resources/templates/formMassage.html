@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form  action="/formMessage" method="post">
+    <textarea name="sms" ></textarea><br>
+    <select name="toEmployee.id">
+        <option th:each="empliyees:${employee}" th:text="${empliyees.name}"
+        th:value="${empliyees.getId()}"> </option>
+    </select>
+    <br>
+    <input type="submit" value="add" class="companySubmit">
+</form>
+
+</body>
+</html>

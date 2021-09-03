@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="2">
+<tr>
+  <th>From</th>
+  <th>Message</th>
+</tr>
+
+<tr th:each="msges:${massages}">
+    <td th:text="${msges.fromEmployee.name}"></td>
+    <td th:text="${msges.sms}"></td>
+</tr>
+</table>
+</body>
+</html>

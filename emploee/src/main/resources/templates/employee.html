@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+</head>
+<body  bgcolor="#6495ed">
+<div th:include="header"></div>
+<a href="/employee/add">Add Employee</a>  <br>
+<a href="/formMessage">Write to colleagues</a>
+<a href="/myAllMassages">My All Massages</a>
+<a href="/allTopics">Topic</a>
+
+<table border = "2px">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>surname</th>
+        <th>email</th>
+        <th>phone Number</th>
+        <th>salary</th>
+        <th>position</th>
+        <th>companyName</th>
+
+    </tr>
+    <tr th:each = "employees:${employee}">
+        <td th:text="${employees.getId()}"></td>
+        <td th:text="${employees.getName()}"></td>
+        <td th:text="${employees.getSurname()}"></td>
+        <td th:text="${employees.getEmail()}"></td>
+        <td th:text="${employees.getPhoneNumber()}"></td>
+        <td th:text="${employees.salary}"></td>
+        <td th:text="${employees.getPosition()}"></td>
+        <td th:text="${employees.getCompany().name}"></td>
+
+    </tr>
+
+
+</table>
+
+</body>
+</html>

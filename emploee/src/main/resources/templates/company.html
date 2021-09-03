@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>company</title>
+</head>
+<body bgcolor="#b0c4de">
+<div th:include="header"></div>
+<a href="/addCompany">Add Company</a>
+<table border="2px">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>size</th>
+        <th>address</th>
+        <th>picture</th>
+        <th>Del</th>
+
+    </tr>
+    <tr th:each="companyes:${company}">
+        <td th:text="${companyes.getId()}"></td>
+        <td th:text="${companyes.getName()}"></td>
+        <td th:text="${companyes.getSize()}"></td>
+        <td th:text="${companyes.getAddress()}"></td>
+        <td ><img width="100" th:if="${companyes.picUrl != null}" th:src="@{/image(picUrl=${companyes.picUrl})}"></td>
+<!--        <td><a th:href="@{/deleteCompany/{id} (id= ${companyes.getId()})}" href="#"><span>Del</span></a>-->
+        <td><a th:href="@{/deleteCompany (id= ${companyes.getId()})}" href="#"><span>Del</span></a>
+            </td>
+
+    </tr>
+
+
+</table>
+
+</body>
+</html>

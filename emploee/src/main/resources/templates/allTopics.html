@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Topic</title>
+</head>
+<body>
+<a href="/addTopic">AddTopic</a>
+
+<div th:each="topic:${allTopics}">
+    <a th:href="@{/allTopics/{id}(topic.id)}"><h2 th:text="${topic.name}"></h2></a>
+    <p th:text="${topic.modelEmployee.company.name}"></p>
+    <p th:text="${topic.createdDate}"></p>
+
+</div>
+
+</body>
+</html>
