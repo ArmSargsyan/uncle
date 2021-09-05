@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.ParseException;
 import java.util.Date;
 
 @Controller
@@ -20,11 +21,11 @@ public class CommentController {
     private final TopicService topicService;
 
     @PostMapping("/addComment")
-    public String addComment(@ModelAttribute Comments comment, @AuthenticationPrincipal CurrentUser principal){
+    public String addComment(@ModelAttribute Comments comment, @AuthenticationPrincipal CurrentUser principal) throws ParseException {
         comment.setModelEmployee(principal.getUser());
         comment.setCreatedDate(new Date());
         commentService.saveComments(comment);
-        return "redirect:/allTopics/"+comment.getTopic().getId();
+        return "redirect:/allTopics/" + comment.getTopic().getId();
 
     }
 }

@@ -26,37 +26,34 @@ public class TopicController {
     private final CommentService commentService;
 
     @GetMapping("/addTopic")
-    public String addTopic(){
+    public String addTopic() {
         return "addTopic";
     }
 
-   @GetMapping("/allTopics")
-    public String viewTopics(@AuthenticationPrincipal CurrentUser principal, ModelMap modelMap){
-       List<Topic> allTopics = topicService.findAllByCompanyId(principal.getUser().getCompany().getId());
-       modelMap.addAttribute("allTopics", allTopics);
-       return "allTopics";
-   }
+    @GetMapping("/allTopics")
+    public String viewTopics(@AuthenticationPrincipal CurrentUser principal, ModelMap modelMap) {
+        List<Topic> allTopics = topicService.findAllByCompanyId(principal.getUser().getCompany().getId());
+        modelMap.addAttribute("allTopics", allTopics);
+        return "allTopics";
+    }
 
-   @PostMapping("/addTopic")
-    public String addTopic(@AuthenticationPrincipal CurrentUser principal, @ModelAttribute Topic topic){
+    @PostMapping("/addTopic")
+    public String addTopic(@AuthenticationPrincipal CurrentUser principal, @ModelAttribute Topic topic) {
         topic.setCreatedDate(new Date());
         topic.setModelEmployee(principal.getUser());
         topicService.sveTopic(topic);
         return "redirect:/allTopics";
-   }
+    }
 
-   @GetMapping("/topics/{id}")
-    public String showAll(ModelMap modelMap, @PathVariable("id") int id){
-       Optional<Topic>topic=topicService.findTopicById(id);
-       if (topic.isEmpty()){
-           return "redirect:/allTopics";
-       }
-       List<Comments>comments=  commentService.getAllCommentsByTopicId(id);
-       modelMap.addAttribute("comments",comments);
-       modelMap.addAttribute("topic",topic.get());
-       return "commentTopic";
-   }
-
-
-
+    @GetMapping("/allTopics/{id}")
+    public String showAll( @PathVariable("id") int id, ModelMap modelMap) {
+        Optional<Topic> topic = topicService.findTopicById(id);
+        if (topic.isEmpty()) {
+            return "redirect:/allTopics";
+        }
+        List<Comments> comments = commentService.getAllCommentsByTopicId(id);
+        modelMap.addAttribute("comments", comments);
+        modelMap.addAttribute("topic", topic.get());
+        return "singleTopic";
+    }
 }

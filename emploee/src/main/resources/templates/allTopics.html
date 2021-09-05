@@ -8,7 +8,8 @@
 <a href="/addTopic">AddTopic</a>
 
 <div th:each="topic:${allTopics}">
-    <a th:href="@{/allTopics/{id}(topic.id)}"><h2 th:text="${topic.name}"></h2></a>
+
+    <a th:href="@{/allTopics/{id}(id=${topic.id})}"> <h3 th:text = "${topic.name}"></h3></a>
     <p th:text="${topic.modelEmployee.company.name}"></p>
     <p th:text="${topic.createdDate}"></p>
 

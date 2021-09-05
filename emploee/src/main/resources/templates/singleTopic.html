@@ -9,9 +9,9 @@
 
 <table>
   <tr th:each="comment:${comments}">
-    <td th:text="${comment.getText()}"></td>
-    <td th:each="${comment.createdDate}"></td>
-    <td th:each="${comment.getModelEmployee().getName()}"></td>
+    <td th:text="${comment.text}"></td>
+    <td th:each="${comment.getCreatedDate()}"></td>
+<!--    <td th:each="${comment.modelEmployee.name}"></td>-->
   </tr>
 </table>
 <form action="/addComment" method="post">

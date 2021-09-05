@@ -36,7 +36,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("index").permitAll()
                // .antMatchers(HttpMethod.GET,"/formMassage").permitAll()
-                //.antMatchers("/addTopic","/allTopic","/topics{id}").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/addTopic","/allTopics","/topics/{id}","/addComment").hasAnyAuthority("USER","ADMIN")
                 .antMatchers("/adminPanel").hasAnyAuthority("ADMIN")
                 .antMatchers("/employee").hasAnyAuthority("ADMIN","USER")
                 .antMatchers("/employeeAdmin").hasAnyAuthority("ADMIN")
