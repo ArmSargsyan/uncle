@@ -7,12 +7,12 @@
 <body>
 <h2 th:text="${topic.name}"></h2>
 
-<table>
+<table  border="2px">
   <tr th:each="comment:${comments}">
     <td th:text="${comment.text}"></td>
-    <td th:each="${comment.getCreatedDate()}"></td>
-<!--    <td th:each="${comment.modelEmployee.name}"></td>-->
-  </tr>
+    <td th:text="${comment.getCreatedDate()}"></td>
+    <td th:text="${comment.modelEmployee.name}"></td>
+  </tr><br>
 </table>
 <form action="/addComment" method="post">
     <input type="hidden" th:value="${topic.id}" name="topic.id">
